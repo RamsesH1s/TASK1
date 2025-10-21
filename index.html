@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"/>
+    <title>TASK — Sistema de Relatórios</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <!-- Ícones (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <header class="app-header">
+      <div class="brand">
+        <img src="/logo.svg" alt="Logo" class="logo" />
+        <div class="brand-text">
+          <h1>RELATÓRIO DE AÇÕES CORRENTES</h1>
+          <span class="subtitle">TASK • Sistema de Relatórios</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnGerarPdf" class="btn btn-success">
+          <i class="fa-solid fa-file-pdf"></i> Gerar PDF
+        </button>
+        <button id="btnEnviar" class="btn btn-indigo">
+          <i class="fa-solid fa-paper-plane"></i> Enviar Relatório
+        </button>
+        <button id="btnLimpar" class="btn btn-danger-outline">
+          <i class="fa-solid fa-eraser"></i> Limpar
+        </button>
+      </div>
+    </header>
+
+    <!-- Cabeçalho editável -->
+    <section class="card">
+      <h2 class="card-title">Informações do Relatório</h2>
+      <div class="info-grid">
+        <div class="field">
+          <label for="dataRelatorio">Data</label>
+          <input type="date" id="dataRelatorio" />
+        </div>
+        <div class="field">
+          <label for="numeroRelatorio">Número</label>
+          <input type="text" id="numeroRelatorio" placeholder="REL-AAAA-MM-DD-###" />
+        </div>
+        <div class="field">
+          <label for="idAnalista">ID Analista</label>
+          <input type="text" id="idAnalista" placeholder="Ex.: ANL-456" />
+        </div>
+        <div class="field">
+          <label for="campoPesquisa">Pesquisa</label>
+          <div class="search-wrapper">
+            <input type="text" id="campoPesquisa" placeholder="Buscar por ID ou número..." />
+            <button id="btnPesquisar" class="icon-btn" aria-label="Pesquisar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <!-- 1.0 -->
+      <section class="card">
+        <h2 class="card-title">1.0 Ocorrências envolvendo Agentes Públicos de Segurança</h2>
+
+        <div class="toggle-row" data-target="lesao-aps">
+          <span class="toggle-label">1.1 Lesão de APS</span>
+          <div class="toggle-group">
+            <label><input type="radio" name="lesao_aps" value="sim"> Sim</label>
+            <label><input type="radio" name="lesao_aps" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div id="campos-lesao-aps" class="dynamic" hidden>
+          <div id="ocorrencias-lesao-aps" class="ocorrencias"></div>
+          <button class="btn btn-primary" data-add="lesao-aps">Incluir Ocorrência</button>
+        </div>
+        <p id="msg-lesao-aps" class="muted">SEM ALTERAÇÃO</p>
+
+        <hr class="divider">
+
+        <div class="toggle-row" data-target="lesao-terceiros">
+          <span class="toggle-label">1.2 Morte ou lesão de terceiros</span>
+          <div class="toggle-group">
+            <label><input type="radio" name="lesao_terceiros" value="sim"> Sim</label>
+            <label><input type="radio" name="lesao_terceiros" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div id="campos-lesao-terceiros" class="dynamic" hidden>
+          <div id="ocorrencias-lesao-terceiros" class="ocorrencias"></div>
+          <button class="btn btn-primary" data-add="lesao-terceiros">Incluir Ocorrência</button>
+        </div>
+        <p id="msg-lesao-terceiros" class="muted">SEM ALTERAÇÃO</p>
+      </section>
+
+      <!-- 2.0 -->
+      <section class="card">
+        <h2 class="card-title">2.0 Morte Violenta Intencional — MVI</h2>
+
+        <div class="toggle-row" data-target="mvi">
+          <span class="toggle-label">2.1 Ocorrência de MVI</span>
+          <div class="toggle-group">
+            <label><input type="radio" name="mvi" value="sim"> Sim</label>
+            <label><input type="radio" name="mvi" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div id="campos-mvi" class="dynamic" hidden>
+          <div id="ocorrencias-mvi" class="ocorrencias"></div>
+          <button class="btn btn-primary" data-add="mvi">Incluir Ocorrência</button>
+        </div>
+        <p id="msg-mvi" class="muted">SEM ALTERAÇÃO</p>
+      </section>
+
+      <!-- 3.0 -->
+      <section class="card">
+        <h2 class="card-title">3.0 Ocorrências com Instituições Financeiras</h2>
+
+        <div class="toggle-row" data-target="instituicoes-bancarias">
+          <span class="toggle-label">3.1 Instituições Bancárias</span>
+          <div class="toggle-group">
+            <label><input type="radio" name="instituicoes_bancarias" value="sim"> Sim</label>
+            <label><input type="radio" name="instituicoes_bancarias" value="nao" checked> Não</label>
+          </div>
+        </div>
+
+        <div id="campos-instituicoes-bancarias" class="dynamic" hidden>
+          <div class="field">
+            <label for="tipo-ocorrencia-bancaria">Tipo de ocorrência</label>
+            <select id="tipo-ocorrencia-bancaria">
+              <option value="">Selecione...</option>
+              <option value="roubo">Roubo</option>
+              <option value="furto">Furto</option>
+            </select>
+          </div>
+
+          <div id="ocorrencias-instituicoes-bancarias" class="ocorrencias"></div>
+          <button class="btn btn-primary" data-add="instituicoes-bancarias">Incluir Ocorrência</button>
+        </div>
+        <p id="msg-instituicoes-bancarias" class="muted">SEM ALTERAÇÃO</p>
+      </section>
+
+      <!-- 4.0 -->
+      <section class="card">
+        <h2 class="card-title">4.0 Outras Ocorrências Relevantes</h2>
+
+        <div class="toggle-row" data-target="outras-ocorrencias">
+          <span class="toggle-label">4.1 Ocorrências relevantes</span>
+          <div class="toggle-group">
+            <label><input type="radio" name="outras_ocorrencias" value="sim"> Sim</label>
+            <label><input type="radio" name="outras_ocorrencias" value="nao" checked> Não</label>
+          </div>
+        </div>
+        <div id="campos-outras-ocorrencias" class="dynamic" hidden>
+          <div id="ocorrencias-outras-ocorrencias" class="ocorrencias"></div>
+          <button class="btn btn-primary" data-add="outras-ocorrencias">Incluir Ocorrência</button>
+        </div>
+        <p id="msg-outras-ocorrencias" class="muted">SEM ALTERAÇÃO</p>
+      </section>
+
+      <!-- 5.0 -->
+      <section class="card">
+        <h2 class="card-title">5.0 Resumo de Mortes Violentas Intencionais — MVI</h2>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr class="header-row">
+                <th colspan="5">MORTE VIOLENTA INTENCIONAL — MVI</th>
+              </tr>
+              <tr>
+                <th>REGIÃO</th>
+                <th>QTD</th>
+                <th colspan="2">MUNICÍPIO</th>
+                <th>NOME</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-resumo-mvi">
+              <!-- preenchemos via TS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6.0 -->
+      <section class="card">
+        <h2 class="card-title">6.0 Demonstrativo de Período Específico</h2>
+
+        <div class="filters">
+          <div class="field">
+            <label for="dataInicial">Data Inicial</label>
+            <input type="date" id="dataInicial" />
+          </div>
+          <div class="field">
+            <label for="dataFinal">Data Final</label>
+            <input type="date" id="dataFinal" />
+          </div>
+          <button id="btnCarregarPeriodo" class="btn btn-primary">Carregar Dados</button>
+        </div>
+
+        <div id="demonstrativo-periodo" class="empty-state">
+          Selecione um período para visualizar os dados
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>© TASK • Sistema de Relatórios</span>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

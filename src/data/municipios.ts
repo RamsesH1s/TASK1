@@ -1,0 +1,41 @@
+export const municipiosPiaui: string[] = [
+  "Teresina","Parnaíba","Picos","Piripiri","Floriano","Campo Maior",
+  "Barras","União","Altos","Esperantina","José de Freitas","Oeiras",
+  "São Raimundo Nonato","Cocal","Paulistana","Luzilândia","Canto do Buriti",
+  "Uruçuí","Valença do Piauí","Bom Jesus","Pedro II","Piracuruca","Corrente",
+  "Miguel Alves","Amarante","Pio IX","São João do Piauí","Regeneração",
+  "Simões","Inhuma","Buriti dos Lopes","Palmeirais","Jaicós","Monsenhor Gil",
+  "Demerval Lobão","Batalha","Elesbão Veloso","Cocal dos Alves","Nazaré do Piauí",
+  "Fronteiras","Cristino Castro","Castelo do Piauí","Itainópolis","Aroazes",
+  "São Miguel do Tapuio","Porto","Lagoinha do Piauí","Landri Sales","Assunção do Piauí",
+  "Alvorada do Gurguéia","Capitão de Campos","Milton Brandão","Curimatá","Ilha Grande",
+  "Jerumenha","Francisco Santos","Dom Expedito Lopes","Hugo Napoleão","Colônia do Gurguéia",
+  "Bertolínia","Patos do Piauí","Joaquim Pires","Matias Olímpio","Sigefredo Pacheco",
+  "Água Branca","Caracol","Marcos Parente","Pau D'Arco do Piauí","Nossa Senhora de Nazaré",
+  "São Francisco do Piauí","Vila Nova do Piauí","Lagoa do Sítio","Wall Ferraz","Paes Landim",
+  "Sussuapara","Novo Santo Antônio","Francisco Ayres","Jardim do Mulato","Lagoa do Piauí",
+  "Santana do Piauí","Brejo do Piauí","São Gonçalo do Piauí","São José do Divino","Bocaína",
+  "Dom Inocêncio","Curralinhos","Morro Cabeça no Tempo","Tanque do Piauí","Rio Grande do Piauí",
+  "Alegrete do Piauí","São João da Fronteira","Santa Rosa do Piauí","São Luis do Piauí",
+  "Jatobá do Piauí","Campinas do Piauí","Massapê do Piauí","Pimenteiras","São João da Serra",
+  "Ipiranga do Piauí","Santo Inácio do Piauí","Várzea Grande","Novo Oriente do Piauí",
+  "Francinópolis","Lagoa Alegre","Boa Hora","São Pedro do Piauí","Madeiro","Campo Alegre do Fidalgo",
+  "Júlio Borges","Santa Cruz do Piauí","São Braz do Piauí","Barra d'Alcântara","Aroeiras do Itaim",
+  "Passagem Franca do Piauí","Santa Filomena","Cajazeiras do Piauí","Arraial","Nazaré do Piauí",
+  "Caraúbas do Piauí","São José do Peixe","Barreiras do Piauí","Ribeiro Gonçalves","Cristalândia do Piauí",
+  "Canavieira","Guadalupe","Alagoinha do Piauí","São Julião","Pavussu","Dirceu Arcoverde",
+  "Isaías Coelho","Floresta do Piauí","Antônio Almeida","Caldeirão Grande do Piauí","Jacobina do Piauí",
+  "Paquetá","Acauã","Belém do Piauí","Vera Mendes","Francisco Macedo","Jardim do Mulato",
+  "Lagoa de São Francisco","São Félix do Piauí","Nova Santa Rita","Santana do Piauï","Santo Antônio dos Milagres",
+  "Wenceslau Braz","Flores do Piauí","Currais","Eliseu Martins","Itaueira","Prata do Piauí",
+  "São José do Piauí","Alegrete do Piauí","Caridade do Piauí","Jurema","Parnaguá","Riacho Frio",
+  "Sebastião Leal","Tamboril do Piauí","Anísio de Abreu","Bonfim do Piauí","Colônia do Piauí",
+  "Fartura do Piauí","Joaquim Pires","Lagoa do Barro do Piauí","Santa Luz","São Francisco de Assis do Piauí",
+  "São Miguel da Baixa Grande","Socorro do Piauí","Várzea Branca"
+];
+
+export const municipiosRegiaoMetropolitanaLower = new Set<string>([
+  "teresina","altos","beneditinos","coivaras","curralinhos",
+  "demerval lobão","josé de freitas","lagoa alegre","lagoa do piauí",
+  "miguel leão","monsenhor gil","nazaré do piauí","pau d'arco do piauí","união"
+]);
