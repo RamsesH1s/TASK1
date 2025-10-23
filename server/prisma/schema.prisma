@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Relatorio {
+  id             Int           @id @default(autoincrement())
+  numero         String
+  data           DateTime
+  idAnalista     String
+  lesaoAps       String
+  lesaoTerceiros String
+  mvi            String
+  instBanc       String
+  outras         String
+  criadoEm       DateTime       @default(now())
+  ocorrencias    Ocorrencia[]
+}
+
+model Ocorrencia {
+  id             Int        @id @default(autoincrement())
+  tipo           String
+  protocolo      String
+  tipificacao    String
+  descricao      String
+  relatorioId    Int
+  relatorio      Relatorio  @relation(fields: [relatorioId], references: [id])
+  endereco       Endereco?
+  vitimas        Vitima[]
+  autores        Autor[]
+}
+
+model Endereco {
+  id             Int         @id @default(autoincrement())
+  municipio      String
+  bairro         String
+  logradouro     String
+  numero         String?
+  complemento    String?
+  referencia     String?
+  ocorrenciaId   Int         @unique
+  ocorrencia     Ocorrencia  @relation(fields: [ocorrenciaId], references: [id])
+}
+
+model Vitima {
+  id             Int         @id @default(autoincrement())
+  nome           String
+  cpf            String?
+  nascimento     String?
+  filiacao       String?
+  orcrim         String?
+  registros      String?
+  imagem         String?
+  ocorrenciaId   Int
+  ocorrencia     Ocorrencia  @relation(fields: [ocorrenciaId], references: [id])
+}
+
+model Autor {
+  id             Int         @id @default(autoincrement())
+  nome           String
+  cpf            String?
+  nascimento     String?
+  filiacao       String?
+  orcrim         String?
+  registros      String?
+  imagem         String?
+  ocorrenciaId   Int
+  ocorrencia     Ocorrencia  @relation(fields: [ocorrenciaId], references: [id])
+}
